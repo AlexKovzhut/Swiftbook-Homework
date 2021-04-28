@@ -1,23 +1,38 @@
 import Foundation
 
+
+
 //1
+
+
 let firstFloat: Float = 3.14
 let secondFloat: Float = 42.0
 let floatSum = Double(firstFloat) + Double(secondFloat)
+
 print("\(floatSum)")
 
+
+
 //2
+
+
+
 let numberOne = 9
 let numberTwo = 7
-let result = numberOne/numberTwo
-let remainder = numberOne%numberTwo
+let result = numberOne / numberTwo
+let remainder = numberOne % numberTwo
 
 print("При делении \(numberOne) на \(numberTwo) результат равен \(result), остаток равен \(remainder)")
 print("Результат деления \(numberOne) на \(numberTwo) равен \(result) \(remainder)/\(numberTwo)")
 
+
+
 //3
-let (dayOfBirth, monthOfBirth, yearOfBirth) = (5,2,1991)
-let (todayDay, todayMonth, todayYear) = (17,4,2021)
+
+
+
+let (dayOfBirth, monthOfBirth, yearOfBirth) = (5, 2, 1991)
+let (todayDay, todayMonth, todayYear) = (17, 4, 2021)
 let (secondsInDay, daysOfMonth, daysOfYear) = (86400, 30, 360)
 
 let daysPassed = (todayYear - yearOfBirth) * daysOfYear - ((monthOfBirth * daysOfMonth - (daysOfMonth - dayOfBirth)) - (todayMonth * daysOfMonth - (daysOfMonth - todayDay)))
@@ -38,8 +53,12 @@ if  monthOfBirth > 0 && monthOfBirth <= 3 {
 }
 
 //4
+
+
+
 let number: Double = 1
 let sinFromNumber = round(1000 * sin(number))/1000
+
 print("Синус от \(number) равен \(sinFromNumber)")
 
 

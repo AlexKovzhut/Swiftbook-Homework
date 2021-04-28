@@ -3,18 +3,18 @@ import UIKit
 //1
 
 var deposit: Double = 500_000
-let period = [1,2,3,4,5]
+let period = 5
 let rate: Double = 11
 var wholeProfit: Double = 0
 
-for _ in period {
+for _ in 1...period {
     let currentProfit: Double = deposit * rate / 100
     wholeProfit += currentProfit
     deposit += currentProfit
     
 }
 
-print("Сумма вклада через \(period.count) лет увеличится на \(String(format: "%0.2f", wholeProfit)) и составит \((String(format: "%0.2f", deposit))) рублей")
+print("Сумма вклада через \(period) лет увеличится на \(String(format: "%0.2f", wholeProfit)) и составит \((String(format: "%0.2f", deposit))) рублей")
 
 
 //2
@@ -45,17 +45,19 @@ for numbers in 1...10 {
 
 //4
 
-let fullPath = 10
-let allDayPath = 2 + -1
-var currentPath = 0
+var fullPath = 0
+var isDay = true
 var daysToHome = 0
 
-while currentPath <= fullPath {
-    daysToHome += currentPath
-    if daysToHome == fullPath {
-        print("Черепашка будет дома через \(daysToHome) дней")
-        break
+while fullPath < 10 {
+    if isDay {
+        fullPath += 2
+        daysToHome += 1
+        isDay = false
     } else {
-        currentPath += allDayPath
+        fullPath -= 1
+        isDay = true
     }
 }
+
+print(daysToHome)
