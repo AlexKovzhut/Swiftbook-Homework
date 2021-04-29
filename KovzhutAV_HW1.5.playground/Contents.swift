@@ -1,8 +1,6 @@
 import UIKit
 
-
 //1
-
 
 let gameResults = [
     "Cалават Юлаев": ["3:6" , "5:5" , "N/A"],
@@ -16,77 +14,66 @@ for (team, result) in gameResults {
     }
 }
 
-
 //2
 
-
-func wallet (for cash: Int...) -> Int {
+func calculateCash(inWallet wallet: Int...) -> Int {
     var sum = 0
     
-    for currentCash in cash {
+    for currentCash in wallet {
         sum += currentCash
     }
     
     return sum
 }
 
-wallet(for: 50, 10, 100, 200, 5000, 1000, 2000, 500)
-
-
+calculateCash(inWallet: 50, 10, 100, 200, 5000, 1000, 2000, 500)
 
 //3.1
 
-
-func evenOrUneven (number: Int) -> Bool {
+func isEvenOrUneven(_ number: Int) -> Bool {
     number % 2 == 0
 }
 
-
-
 //3.2
 
-
-func divisionByThree (number: Int) -> Bool {
+func isDivisibleByThree(_ number: Int) -> Bool {
     number % 3 == 0
 }
 
-
-
 //3.3
 
-
-func returnArrayLength (begin x: Int, end y: Int) -> [Int] {
-    var length: [Int] = []
+func returnArrayLength(from x: Int, to y: Int) -> [Int] {
+    var length: Set<Int> = []
     
     for currentLength in x...y {
-        length.append(currentLength)
+        length.insert(currentLength)
     }
     
-    return length
+    return Array(length)
 }
 
-returnArrayLength (begin: 1, end: 9)
-
+returnArrayLength (from: 1, to: 9)
 
 //3.4
 
-let someArray = returnArrayLength(begin: 1, end: 100)
-
+var someArray = returnArrayLength(from: 1, to: 100)
 
 //3.5
 
-func filter (for array: [Int]) -> [Int] {
+func isFilter(for array: [Int], clouser: (Int) -> Bool) -> [Int] {
     var evenNumbers: [Int] = []
     
-    for unit in array {
-        if evenOrUneven(number: unit) {
-            evenNumbers.append(unit)
+    for number in array {
+        if !clouser(number) {
+            evenNumbers.append(number)
         }
     }
     
     return evenNumbers
 }
 
-filter(for: someArray)
+isFilter(for: someArray, clouser: isEvenOrUneven)
+
+isFilter(for: someArray, clouser: isDivisibleByThree)
 
 
