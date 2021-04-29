@@ -38,22 +38,18 @@ wallet(for: 50, 10, 100, 200, 5000, 1000, 2000, 500)
 
 
 func evenOrUneven (number: Int) -> Bool {
-    number % 2 == 0 ? true : false
+    number % 2 == 0
 }
 
-evenOrUneven(number: 1)
-evenOrUneven(number: 2)
 
 
 //3.2
 
 
 func divisionByThree (number: Int) -> Bool {
-    number % 3 == 0 ? true : false
+    number % 3 == 0
 }
 
-divisionByThree(number: 299)
-divisionByThree(number: 300)
 
 
 //3.3
