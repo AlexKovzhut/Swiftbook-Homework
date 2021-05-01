@@ -1,8 +1,8 @@
 import UIKit
 
 
-//1
 
+//1
 
 class Orange {
     var color:  String = "orange"
@@ -28,8 +28,8 @@ var newOrange = Orange(radius: 1.2)
 print("Orange has \(newOrange.color) color and \(newOrange.taste) taste. The volume of orange is \(newOrange.radius)")
 
 
-//2.1
 
+//2.1
 
 class Shape {
     let height: Double
@@ -37,8 +37,67 @@ class Shape {
     let radius: Double
     let square: Double
     let perimeter: Double
-    let Double: Double
     
+    init(height: Double, width: Double, radius: Double, square: Double, perimeter: Double) {
+        self.height = height
+        self.width = width
+        self.radius = radius
+        self.square = square
+        self.perimeter = perimeter
+    }
     
+    func squareOfShape() {
+        
+    }
+    
+    func perimeterOfShape() {
+        
+    }
     
 }
+
+//2.2
+
+class Circle: Shape {
+    
+}
+
+class Rectangle: Shape {
+    
+}
+
+class Ellipse: Shape {
+    
+}
+
+//2.3
+
+
+
+
+//3.1
+
+class Employee {
+    let salary: Float
+    let name: String
+    let surname: String
+    
+    init(salary: Float, name: String, surname: String) {
+        self.salary = salary
+        self.name = name
+        self.surname = surname
+    }
+}
+
+//3.2
+
+var names = ["John", "Aaron", "Tim", "Ted", "Steven",]
+var surnames = ["Smith", "Dow", "Isaacson", "Pennyworth", "Jankins"]
+
+//3.3
+
+
+//3.4
+
+//3.5
+
