@@ -16,7 +16,7 @@ class Orange {
     }
 }
 
-var newOrange = Orange(radius: 1.5)
+var newOrange = Orange(radius: 4)
 newOrange.orangeVolume
 
 print("Orange has \(newOrange.color) color and \(newOrange.taste) taste. The volume of orange is \(newOrange.radius)")
@@ -27,10 +27,12 @@ print("Orange has \(newOrange.color) color and \(newOrange.taste) taste. The vol
 //2.1
 
 class Shape {
-    var (height, width, radius) = (0.0, 0.0 ,0.0)
+    var height: Float = 0
+    var width: Float = 0
+    var radius: Float = 0
     var square: Float { self.squareOfShape() }
     var perimeter: Float { self.perimeterOfShape() }
-    var descripton: String { "Площадь фигуры \(Shape.self) равна \(square), периметр (длина) равен(а) \(perimeter)" }
+    var descripton: String { "Площадь фигуры \(type(of: self)) равна \(square), периметр (длина) равен(а) \(perimeter)" }
     
     init(height: Float, width: Float) {
         self.height = height
@@ -103,11 +105,11 @@ print(ellipse.descripton)
 //3.1
 
 class Employee {
-    let salary: Float
+    let salary: Int
     let name: String
     let surname: String
     
-    init(salary: Float, name: String, surname: String) {
+    init(salary: Int, name: String, surname: String) {
         self.salary = salary
         self.name = name
         self.surname = surname
@@ -123,9 +125,24 @@ var surnames = ["Smith", "Dow", "Isaacson", "Pennyworth", "Jankins"]
 
 var employees: [Employee] = []
 
-
+while employees.count < 10 {
+    employees.append(Employee(salary: .random(in: 1000...2000),
+                              name: names.randomElement()!,
+                              surname: surnames.randomElement()!))
+}
 
 //3.4
 
-//3.5
+for employee in employees {
+    print("\(employee.name) \(employee.surname)’s salary is $\(employee.salary)")
+}
 
+//3.5
+var emplyeesEvenSalary: [Employee] = []
+
+for employee in employees {
+    if employee.salary % 2 == 0 {
+        emplyeesEvenSalary.append(employee)
+        print("\(employee.name) \(employee.surname)’s salary is $\(employee.salary)")
+    }
+}
