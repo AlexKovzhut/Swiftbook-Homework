@@ -1,29 +1,23 @@
 import UIKit
 
-
-
 //1
 
 class Orange {
-    var color:  String = "orange"
-    var taste: String = "sweet"
-    let radius: Double
-    
+    var (color, taste) = ("orange", "sweet")
+    var radius: Double
+    var orangeVolume: Double { self.calculateOrangeVolume() }
     
     init(radius: Double) {
         self.radius = radius
-        calculateOrangeVolume(radius)
     }
     
-    func calculateOrangeVolume(_ :Double ) -> Double {
+    func calculateOrangeVolume() -> Double {
         4 / 3 * Double.pi * pow(radius, 3)
     }
 }
 
-
-var newOrange = Orange(radius: 1.2)
-//newOrange.orangeVolume
-
+var newOrange = Orange(radius: 1.5)
+newOrange.orangeVolume
 
 print("Orange has \(newOrange.color) color and \(newOrange.taste) taste. The volume of orange is \(newOrange.radius)")
 
@@ -95,6 +89,9 @@ var names = ["John", "Aaron", "Tim", "Ted", "Steven",]
 var surnames = ["Smith", "Dow", "Isaacson", "Pennyworth", "Jankins"]
 
 //3.3
+
+var employees: [Employee] = []
+
 
 
 //3.4
