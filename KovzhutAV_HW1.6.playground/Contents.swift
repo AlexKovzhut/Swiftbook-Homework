@@ -23,48 +23,79 @@ print("Orange has \(newOrange.color) color and \(newOrange.taste) taste. The vol
 
 
 
+
 //2.1
 
 class Shape {
-    let height: Double
-    let width: Double
-    let radius: Double
-    let square: Double
-    let perimeter: Double
+    var (height, width, radius) = (0.0, 0.0 ,0.0)
+    var square: Float { self.squareOfShape() }
+    var perimeter: Float { self.perimeterOfShape() }
+    var descripton: String { "Площадь фигуры \(Shape.self) равна \(square), периметр (длина) равен(а) \(perimeter)" }
     
-    init(height: Double, width: Double, radius: Double, square: Double, perimeter: Double) {
+    init(height: Float, width: Float) {
         self.height = height
         self.width = width
+    }
+    
+    init(radius: Float) {
         self.radius = radius
-        self.square = square
-        self.perimeter = perimeter
     }
-    
-    func squareOfShape() {
+
+    func squareOfShape() -> Float {
+        height * width
         
     }
     
-    func perimeterOfShape() {
-        
+    func perimeterOfShape() -> Float {
+        height + width
     }
-    
 }
 
 //2.2
 
 class Circle: Shape {
+    override func squareOfShape() -> Float {
+        Float(Double.pi) * (pow(Float(radius), 2))
+}
     
+    override func perimeterOfShape() -> Float {
+        2 * Float(Double.pi) * radius
+    }
 }
 
 class Rectangle: Shape {
+    override func squareOfShape() -> Float {
+        height * width
+}
     
+    override func perimeterOfShape() -> Float {
+        2 * (height + width)
+    }
 }
 
 class Ellipse: Shape {
+    override func squareOfShape() -> Float {
+        Float(Double.pi) * height * width
+}
     
+    override func perimeterOfShape() -> Float {
+        4 * (((Float(Double.pi) * height * width) + (height - width)) / height + width)
+    }
 }
 
 //2.3
+
+let circle = Circle(radius: 5)
+
+print(circle.descripton)
+
+let rectangle = Rectangle(height: 6, width: 3)
+
+print(rectangle.descripton)
+
+let ellipse = Ellipse(height: 3, width: 2)
+
+print(ellipse.descripton)
 
 
 
