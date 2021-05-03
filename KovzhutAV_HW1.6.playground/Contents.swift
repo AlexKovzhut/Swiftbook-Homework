@@ -3,16 +3,16 @@ import UIKit
 //1
 
 class Orange {
+    let radius: Double
     var color: String
     var taste: String
-    let radius: Double
     
     var volume: Double { calculateVolume() }
     
-    init(color: String = "", taste: String = "", radius: Double) {
+    init(radius: Double, color: String = "", taste: String = "") {
+        self.radius = radius
         self.color = color
         self.taste = taste
-        self.radius = radius
     }
     
     private func calculateVolume() -> Double {
@@ -33,9 +33,18 @@ class Shape {
     var height: Float = 0
     var width: Float = 0
     var radius: Float = 0
-    var square: Float { self.squareOfShape() }
-    var perimeter: Float { self.perimeterOfShape() }
-    var descripton: String { "Площадь фигуры \(type(of: self)) равна \(square), периметр (длина) равен(а) \(perimeter)" }
+    
+    var square: Float {
+        squareOfShape()
+    }
+    
+    var perimeter: Float {
+        perimeterOfShape()
+    }
+    
+    var descripton: String {
+        "Square of shape \(Self.self) is \(square), Perimeter - \(perimeter)"
+    }
     
     init(height: Float, width: Float) {
         self.height = height
@@ -47,12 +56,12 @@ class Shape {
     }
 
     func squareOfShape() -> Float {
-        height * width
+        0
         
     }
     
     func perimeterOfShape() -> Float {
-        height + width
+        0
     }
 }
 
@@ -60,11 +69,11 @@ class Shape {
 
 class Circle: Shape {
     override func squareOfShape() -> Float {
-        Float(Double.pi) * (pow(Float(radius), 2))
+        Float.pi * (radius * radius)
 }
     
     override func perimeterOfShape() -> Float {
-        2 * Float(Double.pi) * radius
+        2 * Float.pi * radius
     }
 }
 
@@ -80,30 +89,23 @@ class Rectangle: Shape {
 
 class Ellipse: Shape {
     override func squareOfShape() -> Float {
-        Float(Double.pi) * height * width
+        Float.pi * height * width
 }
     
     override func perimeterOfShape() -> Float {
-        4 * (((Float(Double.pi) * height * width) + (height - width)) / height + width)
+        4 * (((Float.pi * height * width) + (height - width)) / height + width)
     }
 }
 
 //2.3
 
 let circle = Circle(radius: 5)
-
-print(circle.descripton)
-
 let rectangle = Rectangle(height: 6, width: 3)
-
-print(rectangle.descripton)
-
 let ellipse = Ellipse(height: 3, width: 2)
 
+print(circle.descripton)
+print(rectangle.descripton)
 print(ellipse.descripton)
-
-
-
 
 //3.1
 
@@ -121,17 +123,17 @@ class Employee {
 
 //3.2
 
-var names = ["John", "Aaron", "Tim", "Ted", "Steven",]
-var surnames = ["Smith", "Dow", "Isaacson", "Pennyworth", "Jankins"]
+let names = ["John", "Aaron", "Tim", "Ted", "Steven",]
+let surnames = ["Smith", "Dow", "Isaacson", "Pennyworth", "Jankins"]
 
 //3.3
 
 var employees: [Employee] = []
 
 while employees.count < 10 {
-    employees.append(Employee(salary: .random(in: 1000...2000),
-                              name: names.randomElement()!,
-                              surname: surnames.randomElement()!))
+    employees.append(Employee(salary: Int.random(in: 1000...2000),
+                              name: names.randomElement() ?? "",
+                              surname: surnames.randomElement() ?? ""))
 }
 
 //3.4
