@@ -3,26 +3,29 @@ import UIKit
 //1
 
 class Orange {
-    var (color, taste) = ("orange", "sweet")
-    var radius: Double
-    var orangeVolume: Double { self.calculateOrangeVolume() }
+    var color: String
+    var taste: String
+    let radius: Double
     
-    init(radius: Double) {
+    var volume: Double { calculateVolume() }
+    
+    init(color: String = "", taste: String = "", radius: Double) {
+        self.color = color
+        self.taste = taste
         self.radius = radius
     }
     
-    func calculateOrangeVolume() -> Double {
+    private func calculateVolume() -> Double {
         4 / 3 * Double.pi * pow(radius, 3)
     }
 }
 
-var newOrange = Orange(radius: 4)
-newOrange.orangeVolume
+let newOrange = Orange(radius: 4)
 
-print("Orange has \(newOrange.color) color and \(newOrange.taste) taste. The volume of orange is \(newOrange.radius)")
+newOrange.color = "orange"
+newOrange.taste = "sweet"
 
-
-
+print("Orange has \(newOrange.color) color and \(newOrange.taste) taste. The volume of orange is \(newOrange.volume)")
 
 //2.1
 
