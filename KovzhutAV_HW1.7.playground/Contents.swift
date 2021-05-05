@@ -9,31 +9,38 @@ enum CalculationType {
 //1.2
 
 func arithmeticOperation(numberOne: Int, numberTwo: Int, operation: CalculationType) -> Int {
-    //print("Result of \(operation.self) \(numberOne) and \(numberTwo) is equal to \()")
+    var result = 0
     
     switch operation {
     case .addition:
-        return numberOne + numberTwo
+        result = numberOne + numberTwo
     case .subtraction:
-        return numberOne - numberTwo
+        result =  numberOne - numberTwo
     case .multiplication:
-        return numberOne * numberTwo
+        result =  numberOne * numberTwo
     case .division:
-        return numberOne / numberTwo
+        result =  numberOne / numberTwo
     }
+    
+    print("Result of \(operation.self) \(numberOne) and \(numberTwo) is equal to \(result)")
+    
+    return result
 }
 
 //1.3
 
-let addition = arithmeticOperation(numberOne: 43, numberTwo: 57, operation: .addition)
-let subtraction = arithmeticOperation(numberOne: 57, numberTwo: 43, operation: .subtraction)
-let multiplication = arithmeticOperation(numberOne: 43, numberTwo: 57, operation: .multiplication)
-let division = arithmeticOperation(numberOne: 57, numberTwo: 43, operation: .division)
+let addition = arithmeticOperation(numberOne: 5, numberTwo: 5, operation: .addition)
+let subtraction = arithmeticOperation(numberOne: 7, numberTwo: 4, operation: .subtraction)
+let multiplication = arithmeticOperation(numberOne: 3, numberTwo: 3, operation: .multiplication)
+let division = arithmeticOperation(numberOne: 9, numberTwo: 2, operation: .division)
 
 //2.1
 
 enum CurrencyUnit {
-    case rouble, dollar, euro
+    case dollar(countries: [DollarCountrys], shortName: String),
+         rouble(countries: [String], shortName: String),
+         euro(countries: [String], shortName: String)
+    
     enum DollarCountrys {
         case USA, Canada, Australia
     }
@@ -41,10 +48,27 @@ enum CurrencyUnit {
 
 //2.2
 
+let dollarCurrency: CurrencyUnit = .dollar(countries: [.USA, .Canada, .Australia], shortName: "USD")
 
+//2.3 Получилась каша  :)
 
-//2.3
+let roubleCurrency: CurrencyUnit = .rouble(countries: ["Russia", "Belarus"], shortName: "RUB")
+let euroCurrency: CurrencyUnit = .euro(countries: ["Italy", "Spain"], shortName: "EUR")
 
+func aboutCurrency (currency: CurrencyUnit) {
+    switch currency {
+    case .dollar(countries: _, shortName: let shortName):
+        print("Dollar is quoted in: \(CurrencyUnit.DollarCountrys.USA), \(CurrencyUnit.DollarCountrys.Canada), \(CurrencyUnit.DollarCountrys.Australia). Short name: \(shortName)")
+    case .rouble(countries: let countries, shortName: let shortName):
+        print("Rouble is quoted in: \(countries.joined(separator: ", ")). Short name: \(shortName)")
+    case .euro(countries: let countries, shortName: let shortName):
+        print("Euro is quoted in: \(countries.joined(separator: ", ")). Short name: \(shortName)")
+    }
+}
+
+aboutCurrency(currency: dollarCurrency)
+aboutCurrency(currency: roubleCurrency)
+aboutCurrency(currency: euroCurrency)
 
 
 //3.1
@@ -53,7 +77,7 @@ struct ChessPlayer {
     let name: String
     var wins: Int
     var description: String {
-        "\(name) : \(wins)"
+        "Player: \(name), Result: \(wins)"
     }
     
     mutating func addWins(count:Int) {
@@ -63,6 +87,11 @@ struct ChessPlayer {
 
 //3.2
 
-let player = ChessPlayer(name: "Elon Musk", wins: 99)
+var player = ChessPlayer(name: "Elon Musk", wins: 99)
 
 print(player.description)
+
+player.addWins(count: 1)
+
+print(player.description)
+
