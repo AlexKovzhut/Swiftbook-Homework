@@ -13,6 +13,9 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         
         setupTabBar()
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .action)
+
     }
     
     // MARK: - Вызываем все VC
@@ -42,7 +45,7 @@ class MainTabBarController: UITabBarController {
             title: itemName,
             image: UIImage(systemName: itemImage)?.withAlignmentRectInsets(
                 .init(
-                    top: 10,          // - Выравнивание items на TabBar
+                    top: 10,
                     left: 0,
                     bottom: 0,
                     right: 0
@@ -53,9 +56,19 @@ class MainTabBarController: UITabBarController {
         item.titlePositionAdjustment = .init(horizontal: 0, vertical: 10)
         
         let navigationController = UINavigationController(rootViewController: viewController)
+        
+        navigationController.navigationBar.prefersLargeTitles = false
+        navigationController.navigationBar.isTranslucent = false
+        navigationController.navigationBar.barTintColor = .systemBlue
+        navigationController.navigationBar.barStyle = .black
+        
         navigationController.tabBarItem = item
         
         return navigationController
+    }
+    
+    @objc func changeSettings() {
+        print("touch")
     }
 
 }

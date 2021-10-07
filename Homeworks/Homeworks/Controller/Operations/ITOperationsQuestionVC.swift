@@ -18,7 +18,7 @@ class OperationsQuestionVC: UIViewController {
         return table
     }()
     
-    private var questionList = Question.getQuestion()
+    private var questionList = OperationQuestion.getQuestion()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +35,15 @@ class OperationsQuestionVC: UIViewController {
         super.viewDidLayoutSubviews()
         
         tableView.frame = view.bounds
+    }
+}
+
+//MARK: - Navigation
+
+extension OperationsQuestionVC {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      let destination = ITOperationsAnswerVC()
+      navigationController?.pushViewController(destination, animated: true)
     }
 }
 
@@ -56,10 +65,10 @@ extension OperationsQuestionVC: UITableViewDataSource, UITableViewDelegate {
 //    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 //        return "Section 1"
 //    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        return print("\(indexPath.row)")
-    }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        return print("\(indexPath.row)")
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
@@ -70,6 +79,8 @@ extension OperationsQuestionVC: UITableViewDataSource, UITableViewDelegate {
         content.text = question.title
         
         cell.contentConfiguration = content
+        cell.selectionStyle = .none
+        
         return cell
     }
 }

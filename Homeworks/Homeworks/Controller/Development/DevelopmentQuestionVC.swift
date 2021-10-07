@@ -18,7 +18,7 @@ class DevelopmentQuestionVC: UIViewController {
         return table
     }()
     
-    private var questionList = Question.getQuestion()
+    private var questionList = DevelopmentQuestion.getQuestion()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,7 @@ class DevelopmentQuestionVC: UIViewController {
 
 extension DevelopmentQuestionVC {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      let destination = QuestionBodyVC()
+      let destination = DevelopmentAnswerVC()
       navigationController?.pushViewController(destination, animated: true)
     }
 }
@@ -79,6 +79,8 @@ extension DevelopmentQuestionVC: UITableViewDataSource, UITableViewDelegate {
         content.text = question.title
         
         cell.contentConfiguration = content
+        cell.selectionStyle = .none
+        
         return cell
     }
 }
